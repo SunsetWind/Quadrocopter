@@ -1,0 +1,433 @@
+double A[] = { 4.25, 0, 0 };
+	double B[] = { 5.75, 3.5, 0 };
+	double C[] = { 7.75, 2, 0 };
+	double D[] = { 6.25, 5, 0 };
+	double E[] = { 0.75, 3, 0 };
+	double F[] = { 0.75, 5, 0 };
+	double G[] = { 8.25, 6.5, 0 };
+	double A1[] = { 4.25, 0, 2 };
+	double B1[] = { 5.75, 3.5, 2 };
+	double C1[] = { 7.75, 2, 2 };
+	double D1[] = { 6.25, 5, 2 };
+	double E1[] = { 0.75, 3, 2 };
+	double F1[] = { 0.75, 5, 2 };
+	double G1[] = { 8.25, 6.5, 2 };
+	double R = 1.04;
+	double r = 2.02;
+	double O[] = { 1.04, 4, 0 };
+	double O1[] = { 1.04, 4, 2 };
+	double o[] = { 8, 4, 0 };
+	double o1[] = { 8, 4, 2 };
+	double pi = acos(-1);
+	double normal[3];
+	double L[] = { 4.75, 4.5, 1};
+	double P = 1;
+
+// Начало фигуры //
+	glBindTexture(GL_TEXTURE_2D, texId[1]);
+	glBegin(GL_TRIANGLES);
+/*////////////////
+norm(B,A,C,normal);
+glNormal3dv(normal);
+glVertex3dv(A);
+glVertex3dv(B);
+glVertex3dv(C);
+
+norm(F, B, D, normal);
+glNormal3dv(normal);
+glTexCoord2d(898.0 / 2048.0, 1 - 75.0 / 2048.0); //500
+glVertex3dv(F);
+glTexCoord2d(1048.0 / 2048.0, 1 - 575.0 / 2048.0); //350
+glVertex3dv(B);
+glTexCoord2d(898.0 / 2048.0, 1 - 625.0 / 2048.0); //500
+glVertex3dv(D);
+
+norm(C,D,B,normal);
+glNormal3dv(normal);
+glVertex3dv(D);
+glVertex3dv(B);
+glVertex3dv(C);
+////////////////*/
+
+for (int i = 0; i < 360; i++)
+{
+	glColor3d(0.3, 0, 0.7);
+	glTexCoord2d(100.0 / 256.0, 1 - 100.0 / 256.0); //300
+	glVertex3dv(L);
+	glTexCoord2d((100.0 - 100.0*sin(pi + i*pi / 180)) / 256.0, 1 - (100.0 + 100.0*cos(pi + i*pi / 180)) / 256.0); //300
+	glVertex3d(L[0] + P*sin(pi + i*pi / 180), L[1] + P*cos(pi + i*pi / 180), L[2]);
+	glTexCoord2d((100.0 - 100.0*sin(pi + i*pi / 180)) / 256.0, 1 - (100.0 + 100.0*cos(pi + i*pi / 180)) / 256.0); //300
+	glVertex3d(L[0] + P*sin(pi + (i + 1)*pi / 180), L[1] + P*cos(pi + (i + 1)*pi / 180), L[2]);
+}
+glEnd();
+glBindTexture(GL_TEXTURE_2D, texId[0]);
+glBegin(GL_TRIANGLES);
+glColor3d(1, 0, 0);
+norm(B, F, E, normal);
+glNormal3dv(normal);
+glTexCoord2d(1098.0 / 2048.0, 1 - 75.0 / 2048.0); //300
+glVertex3dv(E);
+glTexCoord2d(1048.0 / 2048.0, 1 - 575.0 / 2048.0); //350
+glVertex3dv(B);
+glTexCoord2d(898.0 / 2048.0, 1 - 75.0 / 2048.0); //500
+glVertex3dv(F);
+
+norm(D, G, F, normal);
+glNormal3dv(normal);
+glTexCoord2d(898.0 / 2048.0, 1 - 75.0 / 2048.0); //500
+glVertex3dv(F);
+glTexCoord2d(898.0 / 2048.0, 1 - 625.0 / 2048.0); //500
+glVertex3dv(D);
+glTexCoord2d(748.0 / 2048.0, 1 - 825.0 / 2048.0); //650
+glVertex3dv(G);
+
+glColor3d(0, 0, 1);
+/*////////////////
+norm(A1,B1,C1,normal);
+glNormal3dv(normal);
+glVertex3dv(A1);
+glVertex3dv(B1);
+glVertex3dv(C1);
+
+norm(D1, B1, F1, normal);
+glNormal3dv(normal);
+glTexCoord2d(500.0 / 2048.0, 1 - 75.0 / 2048.0); //898
+glVertex3dv(F1);
+glTexCoord2d(350.0 / 2048.0, 1 - 575.0 / 2048.0); //1048
+glVertex3dv(B1);
+glTexCoord2d(500.0 / 2048.0, 1 - 625.0 / 2048.0); //898
+glVertex3dv(D1);
+
+norm(C1,B1,D1,normal);
+glNormal3dv(normal);
+glVertex3dv(D1);
+glVertex3dv(B1);
+glVertex3dv(C1);
+////////////////*/
+
+/*norm(F1, B1, E1, normal);
+glNormal3dv(normal);
+glTexCoord2d(300.0 / 2048.0, 1 - 75.0 / 2048.0); //1098
+glVertex3dv(E1);
+glTexCoord2d(350.0 / 2048.0, 1 - 575.0 / 2048.0); //1048
+glVertex3dv(B1);
+glTexCoord2d(500.0 / 2048.0, 1 - 75.0 / 2048.0); //898
+glVertex3dv(F1);
+
+norm(G1, D1, F1, normal);
+glNormal3dv(normal);
+glTexCoord2d(500.0 / 2048.0, 1 - 75.0 / 2048.0); //898
+glVertex3dv(F1);
+glTexCoord2d(500.0 / 2048.0, 1 - 625.0 / 2048.0); //898
+glVertex3dv(D1);
+glTexCoord2d(650.0 / 2048.0, 1 - 825.0 / 2048.0); //748
+glVertex3dv(G1);*/
+glEnd();
+
+glBegin(GL_QUADS);
+glColor3d(1, 0, 0);
+norm(A, B, B1, normal);
+glNormal3dv(normal);
+glTexCoord2d(801.0 / 2048.0, 1 - 1030.0 / 2048.0);
+glVertex3dv(A);
+glTexCoord2d(420.0 / 2048.0, 1 - 1030.0 / 2048.0);
+glVertex3dv(B);
+glColor3d(0, 0, 1);
+glTexCoord2d(420.0 / 2048.0, 1 - 830.0 / 2048.0);
+glVertex3dv(B1);
+glTexCoord2d(801.0 / 2048.0, 1 - 830.0 / 2048.0);
+glVertex3dv(A1);
+
+glColor3d(1, 0, 0);
+norm(C, A, A1, normal);
+glNormal3dv(normal);
+glTexCoord2d(5.0 / 2048.0, 1 - 1030.0 / 2048.0);
+glVertex3dv(A);
+glTexCoord2d(408.0 / 2048.0, 1 - 1030.0 / 2048.0);
+glVertex3dv(C);
+glColor3d(0, 0, 1);
+glTexCoord2d(408.0 / 2048.0, 1 - 830.0 / 2048.0);
+glVertex3dv(C1);
+glTexCoord2d(5.0 / 2048.0, 1 - 830.0 / 2048.0);
+glVertex3dv(A1);
+
+/*//////////////
+glColor3d(1, 0, 0);
+norm(D,C,C1,normal);
+glNormal3dv(normal);
+glVertex3dv(D);
+glVertex3dv(C);
+glColor3d(0, 0, 1);
+glVertex3dv(C1);
+glVertex3dv(D1);
+
+glColor3d(1, 0, 0);
+glVertex3dv(E);
+glVertex3dv(F);
+glColor3d(0, 0, 1);
+glVertex3dv(F1);
+glVertex3dv(E1);
+/////////////*/
+
+glColor3d(1, 0, 0);
+norm(B, E, E1, normal);
+glNormal3dv(normal);
+glTexCoord2d(1312.0 / 2048.0, 1 - 1030.0 / 2048.0);
+glVertex3dv(B);
+glTexCoord2d(810.0 / 2048.0, 1 - 1030.0 / 2048.0);
+glVertex3dv(E);
+glColor3d(0, 0, 1);
+glTexCoord2d(810.0 / 2048.0, 1 - 830.0 / 2048.0);
+glVertex3dv(E1);
+glTexCoord2d(1312.0 / 2048.0, 1 - 830.0 / 2048.0);
+glVertex3dv(B1);
+
+glColor3d(1, 0, 0);
+norm(G, D, D1, normal);
+glNormal3dv(normal);
+glTexCoord2d(1039.0 / 2048.0, 1 - 1240.0 / 2048.0);
+glVertex3dv(G);
+glTexCoord2d(790.0 / 2048.0, 1 - 1240.0 / 2048.0);
+glVertex3dv(D);
+glColor3d(0, 0, 1);
+glTexCoord2d(790.0 / 2048.0, 1 - 1040.0 / 2048.0);
+glVertex3dv(D1);
+glTexCoord2d(1039.0 / 2048.0, 1 - 1040.0 / 2048.0);
+glVertex3dv(G1);
+
+glColor3d(1, 0, 0);
+norm(F, G, G1, normal);
+glNormal3dv(normal);
+glTexCoord2d(774.0 / 2048.0, 1 - 1240.0 / 2048.0);
+glVertex3dv(F);
+glTexCoord2d(10.0 / 2048.0, 1 - 1240.0 / 2048.0);
+glVertex3dv(G);
+glColor3d(0, 0, 1);
+glTexCoord2d(10.0 / 2048.0, 1 - 1040.0 / 2048.0);
+glVertex3dv(G1);
+glTexCoord2d(774.0 / 2048.0, 1 - 1040.0 / 2048.0);
+glVertex3dv(F1);
+glEnd();
+// Конец фигуры //
+
+// Начало выпуклости //
+glBegin(GL_TRIANGLES);
+glColor3d(1, 0, 0);
+norm(E, O, F, normal);
+glNormal3dv(normal);
+for (int i = 16; i < 164; i++)
+{
+	glTexCoord2d(998.0 / 2048.0, 1 - 104.0 / 2048.0);
+	glVertex3dv(O);
+	glTexCoord2d((998.0 - 104.0*cos(pi + (i)*pi / 180)) / 2048.0, 1 - (104.0 + 104.0*sin(pi + (i)*pi / 180)) / 2048.0);
+	glVertex3d(O[0] + R*sin(pi + i*pi / 180), O[1] + R*cos(pi + i*pi / 180), O[2]);
+	glTexCoord2d((998.0 - 104.0*cos(pi + (i + 1)*pi / 180)) / 2048.0, 1 - (104.0 + 104.0*sin(pi + (i + 1)*pi / 180)) / 2048.0);
+	glVertex3d(O[0] + R*sin(pi + (i + 1)*pi / 180), O[1] + R*cos(pi + (i + 1)*pi / 180), O[2]);
+}
+glEnd();
+
+glBegin(GL_TRIANGLES);
+glColor3d(0, 0, 1);
+/*norm(F1,O1,E1,normal);
+glNormal3dv(normal);
+for (int i = 16; i < 164; i++)
+{
+	glTexCoord2d(400.0 / 2048.0, 1 - 104.0 / 2048.0);
+	glVertex3dv(O1);
+	glTexCoord2d((400.0 - 104.0*cos(pi + i*pi / 180)) / 2048.0, 1 - (104.0 + 104.0*sin(pi + i*pi / 180)) / 2048.0);
+	glVertex3d(O1[0] + R*sin(pi + i*pi / 180), O1[1] + R*cos(pi + i*pi / 180), O1[2]);
+	glTexCoord2d((400.0 - 104.0*cos(pi + (i + 1)*pi / 180)) / 2048.0, 1 - (104.0 + 104.0*sin(pi + (i + 1)*pi / 180)) / 2048.0);
+	glVertex3d(O1[0] + R*sin(pi + (i + 1)*pi / 180), O1[1] + R*cos(pi + (i + 1)*pi / 180), O1[2]);
+}*/
+glEnd();
+
+glBegin(GL_QUAD_STRIP);
+glColor3d(1, 0, 0);
+glTexCoord2d(277.0 / 2048.0, 1 - 1450.0 / 2048.0);
+glVertex3dv(E);
+double Y[] = { E[0], E[1], O1[2]-O[2]};
+glColor3d(0, 0, 1);
+glTexCoord2d(277.0 / 2048.0, 1 - 1250.0 / 2048.0);
+glVertex3dv(E1);
+for (int i = 17; i < 164; i++)
+{
+	double X[] = { O[0] + R*sin(pi + i*pi / 180), O[1] + R*cos(pi + i*pi / 180), O[2] };
+	double X1[] = { O1[0] + R*sin(pi + i*pi / 180), O1[1] + R*cos(pi + i*pi / 180), O1[2] };
+	norm(Y, X, X1, normal);
+	glNormal3dv(normal);
+	glColor3d(1, 0, 0);
+	glTexCoord2d((277.0 - ((i - 16)*267.0 / 147)) / 2048.0, 1 - 1450.0 / 2048.0);
+	glVertex3d(O[0] + R*sin(pi + i*pi / 180), O[1] + R*cos(pi + i*pi / 180), O[2]);
+	glColor3d(0, 0, 1);
+	glTexCoord2d((277.0 - ((i - 16)*267.0 / 147)) / 2048.0, 1 - 1250.0 / 2048.0);
+	glVertex3d(O1[0] + R*sin(pi + i*pi / 180), O1[1] + R*cos(pi + i*pi / 180), O1[2]);
+	Y[0] = X[0];
+	Y[1] = X[1];
+}
+norm(Y, F, F1, normal);
+glNormal3dv(normal);
+glColor3d(1, 0, 0);
+glTexCoord2d(10.0 / 2048.0, 1 - 1450.0 / 2048.0);
+glVertex3dv(F);
+glColor3d(0, 0, 1);
+glTexCoord2d(10.0 / 2048.0, 1 - 1250.0 / 2048.0);
+glVertex3dv(F1);
+glEnd();
+// конец выпуклости
+
+// Начало впуклости
+glBegin(GL_TRIANGLES);
+glColor3d(1, 0, 0);
+norm(D, A, C, normal);
+glNormal3dv(normal);
+for (double i = 7; i < 120; i=i+0.5)
+{
+	if (i < 91.5)
+	{
+		glTexCoord2d(1398.0 / 2048.0, 1 - 425.0 / 2048.0);
+		glVertex3dv(A);
+		glTexCoord2d((998.0 - 202.0*cos(pi + (i)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i)*pi / 180)) / 2048.0);
+		glVertex3d(o[0] + r*sin(pi + i*pi / 180), o[1] + r*cos(pi + i*pi / 180), o[2]);
+		glTexCoord2d((998.0 - 202.0*cos(pi + (i + 1)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i + 1)*pi / 180)) / 2048.0);
+		glVertex3d(o[0] + r*sin(pi + (i + 1)*pi / 180), o[1] + r*cos(pi + (i + 1)*pi / 180), o[2]);
+	}
+	if (i > 71.5)
+	{
+		glTexCoord2d(898.0 / 2048.0, 1 - 75.0 / 2048.0);
+		glVertex3dv(F);
+		glTexCoord2d((998.0 - 202.0*cos(pi + (i)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i)*pi / 180)) / 2048.0);
+		glVertex3d(o[0] + r*sin(pi + i*pi / 180), o[1] + r*cos(pi + i*pi / 180), o[2]);
+		glTexCoord2d((998.0 - 202.0*cos(pi + (i + 1)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i + 1)*pi / 180)) / 2048.0);
+		glVertex3d(o[0] + r*sin(pi + (i + 1)*pi / 180), o[1] + r*cos(pi + (i + 1)*pi / 180), o[2]);
+	}
+}
+glEnd();
+
+glBegin(GL_TRIANGLES);
+glColor3d(0, 0, 1);
+/*norm(C1,A1,D1, normal);
+glNormal3dv(normal);
+for (double i = 7; i < 120; i = i + 0.5)
+{
+	if (i < 91.5)
+	{
+		glTexCoord2d(0.0 / 2048.0, 1 - 425.0 / 2048.0);
+		glVertex3dv(A1);
+		glTexCoord2d((400.0 + 202.0*cos(pi + i*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + i*pi / 180)) / 2048.0);
+		glVertex3d(o1[0] + r*sin(pi + i*pi / 180), o1[1] + r*cos(pi + i*pi / 180), o1[2]);
+		glTexCoord2d((400.0 + 202.0*cos(pi + (i+1)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i+1)*pi / 180)) / 2048.0);
+		glVertex3d(o1[0] + r*sin(pi + (i + 1)*pi / 180), o1[1] + r*cos(pi + (i + 1)*pi / 180), o1[2]);
+	}
+	if (i > 71.5)
+	{
+		glTexCoord2d(500.0 / 2048.0, 1 - 75.0 / 2048.0);
+		glVertex3dv(F1);
+		glTexCoord2d((400.0 + 202.0*cos(pi + (i+1)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i+1)*pi / 180)) / 2048.0);
+		glVertex3d(o1[0] + r*sin(pi + i*pi / 180), o1[1] + r*cos(pi + i*pi / 180), o1[2]);
+		glTexCoord2d((400.0 + 202.0*cos(pi + (i)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i)*pi / 180)) / 2048.0);
+		glVertex3d(o1[0] + r*sin(pi + (i + 1)*pi / 180), o1[1] + r*cos(pi + (i + 1)*pi / 180), o1[2]);
+	}
+}*/
+glEnd();
+
+glBegin(GL_QUAD_STRIP);
+glColor3d(1, 0, 0);
+glTexCoord2d(290.0 / 2048.0, 1 - 1450.0 / 2048.0);
+glVertex3dv(C);
+Y[0] = C[0];
+Y[1] = C[1];
+Y[2] = o[2];
+glColor3d(0, 0, 1);
+glTexCoord2d(290.0 / 2048.0, 1 - 1250.0 / 2048.0);
+glVertex3dv(C1);
+for (int i = 8; i < 120; i++)
+{
+	double X[] = { o[0] + r*sin(pi + i*pi / 180), o[1] + r*cos(pi + i*pi / 180), o[2] };
+	double X1[] = { o1[0] + r*sin(pi + i*pi / 180), o1[1] + r*cos(pi + i*pi / 180), o1[2] };
+	norm(X1, X, Y, normal);
+	glNormal3dv(normal);
+	glColor3d(1, 0, 0);
+	glTexCoord2d((290.0 + ((i - 7) * 395 / 112)) / 2048.0, 1 - 1450.0 / 2048.0);
+	glVertex3d(o[0] + r*sin(pi + i*pi / 180), o[1] + r*cos(pi + i*pi / 180), o[2]);
+	glColor3d(0, 0, 1);
+	glTexCoord2d((290.0 + ((i - 7) * 395 / 112)) / 2048.0, 1 - 1250.0 / 2048.0);
+	glVertex3d(o1[0] + r*sin(pi + i*pi / 180), o1[1] + r*cos(pi + i*pi / 180), o1[2]);
+	Y[0] = X[0];
+	Y[1] = X[1];
+}
+norm(D1, D, Y, normal);
+glNormal3dv(normal);
+glColor3d(1, 0, 0);
+glTexCoord2d(685.0 / 2048.0, 1 - 1450.0 / 2048.0);
+glVertex3dv(D);
+glColor3d(0, 0, 1);
+glTexCoord2d(685.0 / 2048.0, 1 - 1250.0 / 2048.0);
+glVertex3dv(D1);
+glEnd();
+// Конец впуклости    
+	
+	//текст сообщения вверху слева, если надоест - закоментировать, или заменить =)
+	char c[250];  //максимальная длина сообщения
+	sprintf_s(c, "(T)Текстуры - %d\n(L)Свет - %d\n(Q)Прозрачность - %d\n\nУправление светом:\n"
+		"G - перемещение в горизонтальной плоскости,\nG+ЛКМ+перемещение по вертикальной линии\n"
+		"R - установить камеру и свет в начальное положение\n"
+		"F - переместить свет в точку камеры", textureMode, lightMode, alpha);
+	ogl->message = std::string(c);
+
+	glColor4d(1, 0.3, 0, 0.7);
+	
+	glBegin(GL_TRIANGLES);
+	norm(F1, B1, E1, normal);
+	glNormal3dv(normal);
+	glTexCoord2d(300.0 / 2048.0, 1 - 75.0 / 2048.0); //1098
+	glVertex3dv(E1);
+	glTexCoord2d(350.0 / 2048.0, 1 - 575.0 / 2048.0); //1048
+	glVertex3dv(B1);
+	glTexCoord2d(500.0 / 2048.0, 1 - 75.0 / 2048.0); //898
+	glVertex3dv(F1);
+
+	norm(G1, D1, F1, normal);
+	glNormal3dv(normal);
+	glTexCoord2d(500.0 / 2048.0, 1 - 75.0 / 2048.0); //898
+	glVertex3dv(F1);
+	glTexCoord2d(500.0 / 2048.0, 1 - 625.0 / 2048.0); //898
+	glVertex3dv(D1);
+	glTexCoord2d(650.0 / 2048.0, 1 - 825.0 / 2048.0); //748
+	glVertex3dv(G1);
+
+	norm(F1, O1, E1, normal);
+	glNormal3dv(normal);
+	for (int i = 16; i < 164; i++)
+	{
+		glTexCoord2d(400.0 / 2048.0, 1 - 104.0 / 2048.0);
+		glVertex3dv(O1);
+		glTexCoord2d((400.0 - 104.0*cos(pi + i*pi / 180)) / 2048.0, 1 - (104.0 + 104.0*sin(pi + i*pi / 180)) / 2048.0);
+		glVertex3d(O1[0] + R*sin(pi + i*pi / 180), O1[1] + R*cos(pi + i*pi / 180), O1[2]);
+		glTexCoord2d((400.0 - 104.0*cos(pi + (i + 1)*pi / 180)) / 2048.0, 1 - (104.0 + 104.0*sin(pi + (i + 1)*pi / 180)) / 2048.0);
+		glVertex3d(O1[0] + R*sin(pi + (i + 1)*pi / 180), O1[1] + R*cos(pi + (i + 1)*pi / 180), O1[2]);
+	}
+
+	norm(C1, A1, D1, normal);
+	glNormal3dv(normal);
+	for (double i = 7; i < 120; i = i + 0.5)
+	{
+		if (i < 91.5)
+		{
+			glTexCoord2d(0.0 / 2048.0, 1 - 425.0 / 2048.0);
+			glVertex3dv(A1);
+			glTexCoord2d((400.0 + 202.0*cos(pi + i*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + i*pi / 180)) / 2048.0);
+			glVertex3d(o1[0] + r*sin(pi + i*pi / 180), o1[1] + r*cos(pi + i*pi / 180), o1[2]);
+			glTexCoord2d((400.0 + 202.0*cos(pi + (i + 1)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i + 1)*pi / 180)) / 2048.0);
+			glVertex3d(o1[0] + r*sin(pi + (i + 1)*pi / 180), o1[1] + r*cos(pi + (i + 1)*pi / 180), o1[2]);
+		}
+		if (i > 71.5)
+		{
+			glTexCoord2d(500.0 / 2048.0, 1 - 75.0 / 2048.0);
+			glVertex3dv(F1);
+			glTexCoord2d((400.0 + 202.0*cos(pi + (i + 1)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i + 1)*pi / 180)) / 2048.0);
+			glVertex3d(o1[0] + r*sin(pi + i*pi / 180), o1[1] + r*cos(pi + i*pi / 180), o1[2]);
+			glTexCoord2d((400.0 + 202.0*cos(pi + (i)*pi / 180)) / 2048.0, 1 - (800.0 + 202.0*sin(pi + (i)*pi / 180)) / 2048.0);
+			glVertex3d(o1[0] + r*sin(pi + (i + 1)*pi / 180), o1[1] + r*cos(pi + (i + 1)*pi / 180), o1[2]);
+		}
+	}
+	glEnd();
